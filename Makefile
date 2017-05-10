@@ -21,6 +21,6 @@ build: clean
 	mkdir build
 	gox -os="linux darwin windows" -arch="386 amd64" -output="build/{{.Dir}}_{{.OS}}_{{.Arch}}" ./...
 
-.PHONY: cmd
-cmd:
-	go run ./cmd/**/*.go ${ARGS}
+.PHONY: run
+run:
+	go run *.go ${ARGS}
