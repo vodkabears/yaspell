@@ -21,7 +21,7 @@ func (v *Version) IsBoolFlag() bool {
 }
 
 // Set implements interface of flag.Value (https://golang.org/pkg/flag/#Value)
-func (*Version) Set(value string) error {
+func (*Version) Set(string) error {
 	fmt.Println(version)
 	os.Exit(0)
 

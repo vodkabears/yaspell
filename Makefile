@@ -1,16 +1,16 @@
-.PHONY: install
-install:
-	go get -u github.com/alecthomas/gometalinter
-	gometalinter --install
-	go get -u github.com/mitchellh/gox
-
 .PHONY: githooks
 githooks:
 	cp -f githooks/* .git/hooks/
 
+.PHONY: install
+install: githooks
+	go get -u github.com/alecthomas/gometalinter
+	gometalinter --install
+	go get -u github.com/mitchellh/gox
+
 .PHONY: lint
 lint:
-	gometalinter ./... --enable-all --disable=lll --vendor --tests --sort=path --sort=line --sort=column --deadline=1m
+	gometalinter ./... --enable-all --line-length=100 --vendor --tests --sort=path --sort=line --sort=column --deadline=2m
 
 .PHONY: clean
 clean:
