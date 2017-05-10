@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -44,8 +44,8 @@ var masks = map[string]Bitmask{
 // Bitmask is used for bitmasks
 type Bitmask int
 
-func (b *Bitmask) String() string {
-	return fmt.Sprint(*b)
+func (b Bitmask) String() string {
+	return strconv.Itoa(int(b))
 }
 
 // Set implements interface of flag.Value (https://golang.org/pkg/flag/#Value)

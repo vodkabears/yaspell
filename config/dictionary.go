@@ -2,7 +2,6 @@ package config
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -15,8 +14,8 @@ type Dictionary struct {
 	Words []*regexp.Regexp
 }
 
-func (d *Dictionary) String() string {
-	return fmt.Sprint(*d)
+func (d Dictionary) String() string {
+	return d.File
 }
 
 // Set implements interface of flag.Value (https://golang.org/pkg/flag/#Value)
