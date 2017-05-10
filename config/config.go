@@ -5,6 +5,7 @@ type Config struct {
 	Lang       string
 	Format     string
 	Options    Bitmask
+	Version    Version
 	Dictionary Dictionary
 }
 

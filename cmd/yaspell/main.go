@@ -14,14 +14,16 @@ func main() {
 	cfg := config.NewConfig()
 	flag.StringVar(&cfg.Lang, "lang", cfg.Lang, "Language to check")
 	flag.StringVar(&cfg.Format, "format", cfg.Format, "Text format")
-	flag.Var(&cfg.Dictionary, "dictionary", "Dictionary with regexp patterns")
-	flag.Var(&cfg.Options, "options", "Yaspeller options")
+	flag.Var(&cfg.Dictionary, "dict", "Dictionary with regexp patterns")
+	flag.Var(&cfg.Options, "opts", "Yaspeller options")
+	flag.Var(&cfg.Version, "v", "Prints current version")
 	flag.Usage = func() {
 		fmt.Printf("Usage of %s [FLAGS...] [FILES...]:\n", os.Args[0])
 		flag.PrintDefaults()
 	}
 
 	flag.Parse()
+
 	files := flag.Args()
 	if len(files) == 0 {
 		flag.Usage()
