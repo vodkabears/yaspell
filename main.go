@@ -10,17 +10,64 @@ import (
 	"github.com/yaspell/reader"
 )
 
+const helpText = `Usage: yaspell [flags] [files ...]
+
+Yaspell checks spelling of large texts with Yandex.Speller API.
+
+Flags:
+
+-opts
+	Yaspeller options.
+
+	Example: -opts=IGNORE_UPPERCASE,IGNORE_DIGITS
+
+	IGNORE_UPPERCASE ignores uppercased words
+	IGNORE_DIGITS ignores words with digits
+	IGNORE_URLS ignores urls, emails, filenames
+	FIND_REPEAT_WORDS highlights repetitions of words, consecutive
+	IGNORE_LATIN disables suggestions for incorrect words
+	FLAG_LATIN marks latin words as incorrect
+	BY_WORDS ignores dictionary context
+	IGNORE_CAPITALIZATION ignores the incorrect use of UPPERCASE/lowercase letters
+	IGNORE_ROMAN_NUMERALS ignores roman numerals
+
+-dict
+	Dictionary file with regexp patterns.
+
+	Example: -dict=dict.txt
+	Regexp syntax: https://golang.org/pkg/regexp/syntax/#hdr-Syntax
+
+	dict.txt content:
+	^nananana$
+	^(?i)gogogogo$
+
+-lang
+	Language to check.
+
+	Values: en, ru, uk
+	Default: ru,en
+	Example: -lang=en,ru,uk
+
+-format
+	Text format.
+
+	Values: html, plain
+	Default: plain
+	Example: -lang=html
+
+-version
+	Prints current version.
+`
+
 func main() {
 	cfg := config.NewConfig()
 	flag.StringVar(&cfg.Lang, "lang", cfg.Lang, "Language to check")
 	flag.StringVar(&cfg.Format, "format", cfg.Format, "Text format")
-	flag.Var(&cfg.Dictionary, "dict", "Dictionary with regexp patterns")
+	flag.Var(&cfg.Dictionary, "dict", "Dictionary file with regexp patterns")
 	flag.Var(&cfg.Options, "opts", "Yaspeller options")
 	flag.Var(&cfg.Version, "version", "Prints current version")
 	flag.Usage = func() {
-		fmt.Println("Usage: yaspell [flags] [files ...]")
-		fmt.Println("Flags:")
-		flag.PrintDefaults()
+		fmt.Println(helpText)
 	}
 
 	flag.Parse()
