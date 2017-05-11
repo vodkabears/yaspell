@@ -20,7 +20,7 @@ const (
 	NoSuggest = 2 << 4
 	// FlagLatin marks latin words as incorrect
 	FlagLatin = 2 << 5
-	// ByWords ignores a dictionary context
+	// ByWords ignores dictionary context
 	ByWords = 2 << 6
 	// IgnoreCapitalization ignores the incorrect use of UPPERCASE/lowercase letters
 	IgnoreCapitalization = 2 << 7

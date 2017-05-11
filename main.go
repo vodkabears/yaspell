@@ -16,9 +16,10 @@ func main() {
 	flag.StringVar(&cfg.Format, "format", cfg.Format, "Text format")
 	flag.Var(&cfg.Dictionary, "dict", "Dictionary with regexp patterns")
 	flag.Var(&cfg.Options, "opts", "Yaspeller options")
-	flag.Var(&cfg.Version, "v", "Prints current version")
+	flag.Var(&cfg.Version, "version", "Prints current version")
 	flag.Usage = func() {
-		fmt.Printf("Usage of %s [FLAGS...] [FILES...]:\n", os.Args[0])
+		fmt.Println("Usage: yaspell [flags] [files ...]")
+		fmt.Println("Flags:")
 		flag.PrintDefaults()
 	}
 

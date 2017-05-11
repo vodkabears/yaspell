@@ -33,6 +33,11 @@ func readFile(file string, ch chan Chunk, wg *sync.WaitGroup) {
 		ch <- Chunk{file, string(buf)}
 	}
 
+	err = f.Close()
+	if err != nil {
+		log.Println(err)
+	}
+
 	wg.Done()
 }
 

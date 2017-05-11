@@ -45,23 +45,22 @@ func Check(chunk *reader.Chunk, cfg *config.Config) error {
 		"options": {strconv.Itoa(int(cfg.Options))},
 	})
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
-	defer func() {
-		err = resp.Body.Close()
-		if err != nil {
-			log.Fatal(err)
-		}
-	}()
+
+	err = resp.Body.Close()
+	if err != nil {
+		log.Println(err)
+	}
 
 	var misspells []Misspell
 	if err = json.Unmarshal(body, &misspells); err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	var dictWords = cfg.Dictionary.Words

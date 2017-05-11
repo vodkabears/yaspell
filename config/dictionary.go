@@ -8,7 +8,7 @@ import (
 	"regexp"
 )
 
-// Dictionary stores regexp patterns of allowed words
+// Dictionary implements flag.Value interface and stores regexp patterns of allowed words.
 type Dictionary struct {
 	File  string
 	Words []*regexp.Regexp
@@ -18,29 +18,38 @@ func (d Dictionary) String() string {
 	return d.File
 }
 
-// Set implements interface of flag.Value (https://golang.org/pkg/flag/#Value)
+// Set reads content of a dictionary and save it into the memory
 func (d *Dictionary) Set(file string) error {
 	f, err := os.Open(file)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	b := bufio.NewReader(f)
+	var re *regexp.Regexp
+	var line []byte
+	var words []*regexp.Regexp
 	for {
-		line, _, err := b.ReadLine()
+		line, _, err = b.ReadLine()
 		if err == io.EOF {
 			break
 		}
 
-		r, err := regexp.Compile(string(line))
+		re, err = regexp.Compile(string(line))
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
-		d.Words = append(d.Words, r)
+		words = append(words, re)
 	}
 
 	d.File = file
+	d.Words = words
+
+	err = f.Close()
+	if err != nil {
+		log.Println(err)
+	}
 
 	return nil
 }
