@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/yaspell/config"
+	"github.com/VodkaBears/yaspell/config"
 )
 
 func TestBitmaskSet(t *testing.T) {

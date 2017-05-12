@@ -3,8 +3,8 @@ package checker_test
 import (
 	"testing"
 
-	"github.com/yaspell/checker"
-	"github.com/yaspell/reader"
+	"github.com/VodkaBears/yaspell/checker"
+	"github.com/VodkaBears/yaspell/reader"
 )
 
 func TestCheckerError(t *testing.T) {

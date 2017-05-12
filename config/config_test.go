@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yaspell/config"
+	"github.com/VodkaBears/yaspell/config"
 )
 
 func TestNewConfig(t *testing.T) {

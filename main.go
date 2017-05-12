@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/yaspell/checker"
-	"github.com/yaspell/config"
-	"github.com/yaspell/reader"
+	"github.com/VodkaBears/yaspell/checker"
+	"github.com/VodkaBears/yaspell/config"
+	"github.com/VodkaBears/yaspell/reader"
 )
 
 const helpText = `Usage: yaspell [flags] [files ...]

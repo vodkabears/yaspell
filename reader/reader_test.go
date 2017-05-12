@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/yaspell/reader"
+	"github.com/VodkaBears/yaspell/reader"
 )
 
 func TestReaderRead(t *testing.T) {

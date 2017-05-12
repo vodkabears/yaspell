@@ -9,8 +9,8 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/yaspell/config"
-	"github.com/yaspell/reader"
+	"github.com/VodkaBears/yaspell/config"
+	"github.com/VodkaBears/yaspell/reader"
 )
 
 const serviceURL = "http://speller.yandex.net/services/spellservice.json/checkText"

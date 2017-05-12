@@ -3,7 +3,7 @@ package checker
 import (
 	"fmt"
 
-	"github.com/yaspell/reader"
+	"github.com/VodkaBears/yaspell/reader"
 )
 
 // Error stores misspells of a chunk

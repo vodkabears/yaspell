@@ -3,7 +3,7 @@ package config_test
 import (
 	"testing"
 
-	"github.com/yaspell/config"
+	"github.com/VodkaBears/yaspell/config"
 )
 
 func TestDictionaryString(t *testing.T) {

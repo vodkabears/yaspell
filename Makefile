@@ -8,10 +8,11 @@ install: githooks
 	gometalinter --install
 	go get -u github.com/mitchellh/gox
 	go get -u github.com/msoap/go-carpet
+	go install ./...
 
 .PHONY: lint
 lint:
-	gometalinter ./... --enable-all --line-length=100 --vendor --tests --sort=path --sort=line --sort=column --deadline=2m
+	gometalinter ./... --enable-all --line-length=100 --vendor --sort=path --sort=line --sort=column --deadline=5m -t -j 1
 
 .PHONY: test
 test:
