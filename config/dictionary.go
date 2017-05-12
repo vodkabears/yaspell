@@ -25,10 +25,10 @@ func (d *Dictionary) Set(file string) error {
 		return err
 	}
 
-	b := bufio.NewReader(f)
 	var re *regexp.Regexp
 	var line []byte
 	var words []*regexp.Regexp
+	b := bufio.NewReader(f)
 	for {
 		line, _, err = b.ReadLine()
 		if err == io.EOF {

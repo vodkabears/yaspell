@@ -16,8 +16,9 @@ func TestDictionaryString(t *testing.T) {
 }
 
 func TestDictionarySet(t *testing.T) {
-	file := "testdata/dict.txt"
 	var d config.Dictionary
+	file := "testdata/dict.txt"
+
 	err := d.Set(file)
 	if err != nil {
 		t.Log("Unexpected error:", err)

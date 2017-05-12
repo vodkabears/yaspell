@@ -27,9 +27,8 @@ func TestCheckerError(t *testing.T) {
 			Suggestions: []string{"Go routines"},
 		},
 	}
-	file := "file.txt"
 	err := checker.Error{
-		&reader.Chunk{file, "test"},
+		&reader.Chunk{"file.txt", "test"},
 		misspells,
 	}
 	expected := "file.txt:0:0: Golang\n" +

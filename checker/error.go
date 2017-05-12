@@ -13,9 +13,9 @@ type Error struct {
 }
 
 func (e Error) Error() string {
+	var str string
 	file := e.Chunk.File
 	lastIndex := len(e.Misspells) - 1
-	var str string
 	for i, m := range e.Misspells {
 		str += fmt.Sprintf("%s:%d:%d: %s", file, m.Row, m.Col, m.Word)
 		if len(m.Suggestions) > 0 {

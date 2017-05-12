@@ -9,6 +9,7 @@ import (
 
 func TestBitmaskSet(t *testing.T) {
 	var b config.Bitmask
+
 	err := b.Set("IGNORE_UPPERCASE,IGNORE_DIGITS,IGNORE_URLS")
 	if err != nil {
 		t.Log("Unexpected error:", err)

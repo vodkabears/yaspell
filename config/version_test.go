@@ -8,8 +8,8 @@ import (
 )
 
 func TestVersionString(t *testing.T) {
-	re := regexp.MustCompile(`^\d+\.\d+\.\d+$`)
 	var v config.Version
+	re := regexp.MustCompile(`^\d+\.\d+\.\d+$`)
 
 	if !re.MatchString(v.String()) {
 		t.Error("Expected semver, got", v)
