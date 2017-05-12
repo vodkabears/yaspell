@@ -8,6 +8,8 @@ install: githooks
 	gometalinter --install
 	go get -u github.com/mitchellh/gox
 	go get -u github.com/msoap/go-carpet
+	go get -u github.com/go-playground/overalls
+	go get -u github.com/mattn/goveralls
 	go install ./...
 
 .PHONY: lint
@@ -34,3 +36,8 @@ build: clean
 .PHONY: run
 run:
 	go run *.go ${ARGS}
+
+.PHONY: coveralls
+coveralls:
+	overalls -project=github.com/VodkaBears/yaspell -covermode=count
+	goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken 2zEPspDOcwDzRYBKbDmjk846HOf4ugxlO
