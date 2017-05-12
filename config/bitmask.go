@@ -51,7 +51,7 @@ func (b Bitmask) String() string {
 // Set implements interface of flag.Value (https://golang.org/pkg/flag/#Value)
 func (b *Bitmask) Set(value string) error {
 	for _, key := range strings.Split(value, ",") {
-		*b += masks[key]
+		*b |= masks[key]
 	}
 
 	return nil

@@ -2,13 +2,14 @@ package reader
 
 import (
 	"bufio"
+	"bytes"
 	"io"
 	"log"
 	"os"
 	"sync"
 )
 
-const bytes = 10000
+const maxBytes = 10000
 
 // Chunk is a chunk of text from file
 type Chunk struct {
@@ -23,14 +24,14 @@ func readFile(file string, ch chan Chunk, wg *sync.WaitGroup) {
 	}
 
 	b := bufio.NewReader(f)
-	buf := make([]byte, bytes)
+	buf := make([]byte, maxBytes)
 	for {
 		_, err = b.Read(buf)
 		if err == io.EOF {
 			break
 		}
 
-		ch <- Chunk{file, string(buf)}
+		ch <- Chunk{file, string(bytes.Trim(buf, "\x00"))}
 	}
 
 	err = f.Close()

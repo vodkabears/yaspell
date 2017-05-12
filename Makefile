@@ -7,10 +7,19 @@ install: githooks
 	go get -u github.com/alecthomas/gometalinter
 	gometalinter --install
 	go get -u github.com/mitchellh/gox
+	go get -u github.com/msoap/go-carpet
 
 .PHONY: lint
 lint:
 	gometalinter ./... --enable-all --line-length=100 --vendor --tests --sort=path --sort=line --sort=column --deadline=2m
+
+.PHONY: test
+test:
+	go test -cover ./...
+
+.PHONY: cover
+cover:
+	go-carpet
 
 .PHONY: clean
 clean:
