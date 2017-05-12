@@ -53,7 +53,7 @@ Flags:
 
 	Values: html, plain
 	Default: plain
-	Example: -lang=html
+	Example: -format=html
 
 -version
 	Prints current version.
