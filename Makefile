@@ -15,10 +15,12 @@ install: githooks
 	go get -u github.com/msoap/go-carpet
 	go get -u github.com/go-playground/overalls
 	go get -u github.com/mattn/goveralls
+	go get -u github.com/vodkabears/yaspell
 	go install ./...
 
 .PHONY: lint
 lint:
+	yaspell -opts=IGNORE_UPPERCASE,IGNORE_DIGITS,IGNORE_URLS -dict=.yaspellignore README.md
 	gometalinter ./... --enable-all --line-length=100 --vendor --sort=path --sort=line --sort=column --deadline=5m -t -j 1
 
 .PHONY: test

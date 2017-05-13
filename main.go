@@ -21,7 +21,7 @@ Flags:
 
 	Example: -opts=IGNORE_UPPERCASE,IGNORE_DIGITS
 
-	IGNORE_UPPERCASE ignores uppercased words
+	IGNORE_UPPERCASE ignores uppercase words
 	IGNORE_DIGITS ignores words with digits
 	IGNORE_URLS ignores urls, emails, filenames
 	FIND_REPEAT_WORDS highlights repetitions of words, consecutive
@@ -39,8 +39,8 @@ Flags:
 	Regexp syntax: https://golang.org/pkg/regexp/syntax/#hdr-Syntax
 
 	dict.txt content:
-	^nananana$
-	^(?i)gogogogo$
+	^lang$
+	^dict$
 
 -lang
 	Language to check.

@@ -38,28 +38,28 @@ Yandex.Speller options.
 
 Example: `-opts=IGNORE_UPPERCASE,IGNORE_DIGITS`
 
-`IGNORE_UPPERCASE` ignores uppercased words  
+`IGNORE_UPPERCASE` ignores uppercase words  
 `IGNORE_DIGITS` ignores words with digits  
-`IGNORE_URLS` ignores urls, emails, filenames  
+`IGNORE_URLS` ignores URLs, emails, filenames  
 `FIND_REPEAT_WORDS` highlights repetitions of words, consecutive  
-`IGNORE_LATIN` ignores latin words  
+`IGNORE_LATIN` ignores Latin words  
 `NO_SUGGEST` disables suggestions for incorrect words  
-`FLAG_LATIN` marks latin words as incorrect  
+`FLAG_LATIN` marks Latin words as incorrect  
 `BY_WORDS` ignores dictionary context  
 `IGNORE_CAPITALIZATION` ignores the incorrect use of UPPERCASE/lowercase letters  
-`IGNORE_ROMAN_NUMERALS` ignores roman numerals  
+`IGNORE_ROMAN_NUMERALS` ignores Roman numerals  
 
 #### -dict
 
-Dictionary file with regexp patterns.
+Dictionary file with regular expressions.
 
 Example: `-dict=dict.txt`  
-Regexp syntax: https://golang.org/pkg/regexp/syntax/#hdr-Syntax  
+Syntax of regular expressions : https://golang.org/pkg/regexp/syntax/#hdr-Syntax  
 
 dict.txt content:
 ```
-^nananana$  
-^(?i)gogogogo$
+^lang$
+^(G|g)olang$
 ```
 
 #### -lang
@@ -82,7 +82,7 @@ Example: `-format=html`
 
 Prints current version.
 
-## Todo
+## To-do
 
 - Improve terminal interface.
 - GUI.
