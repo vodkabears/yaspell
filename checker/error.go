@@ -17,7 +17,7 @@ func (e Error) Error() string {
 	file := e.Chunk.File
 	lastIndex := len(e.Misspells) - 1
 	for i, m := range e.Misspells {
-		str += fmt.Sprintf("%s:%d:%d: %s", file, m.Row, m.Col, m.Word)
+		str += fmt.Sprintf("%s:%d:%d: %s", file, m.Row+1, m.Col+1, m.Word)
 		if len(m.Suggestions) > 0 {
 			str += fmt.Sprintf(" %v", m.Suggestions)
 		}

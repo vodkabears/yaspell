@@ -31,8 +31,8 @@ func TestCheckerError(t *testing.T) {
 		&reader.Chunk{"file.txt", "test"},
 		misspells,
 	}
-	expected := "file.txt:0:0: Golang\n" +
-		"file.txt:1:0: Goroutines [Go routines]"
+	expected := "file.txt:1:1: Golang\n" +
+		"file.txt:2:1: Goroutines [Go routines]"
 
 	if err.Error() != expected {
 		t.Errorf("\nExpected to get:\n%s.\nGot:\n%s", err, expected)
