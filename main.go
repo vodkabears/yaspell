@@ -25,7 +25,8 @@ Flags:
 	IGNORE_DIGITS ignores words with digits
 	IGNORE_URLS ignores urls, emails, filenames
 	FIND_REPEAT_WORDS highlights repetitions of words, consecutive
-	IGNORE_LATIN disables suggestions for incorrect words
+	IGNORE_LATIN ignores latin words
+	NO_SUGGEST disables suggestions for incorrect words
 	FLAG_LATIN marks latin words as incorrect
 	BY_WORDS ignores dictionary context
 	IGNORE_CAPITALIZATION ignores the incorrect use of UPPERCASE/lowercase letters
