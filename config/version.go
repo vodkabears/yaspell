@@ -5,8 +5,8 @@ import (
 	"os"
 )
 
-// App version
-const version = "0.0.1"
+// App version. Linking externally.
+var version = "0.0.0"
 
 // Version implements flag.Value interface to show the version
 type Version bool

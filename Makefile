@@ -1,3 +1,8 @@
+PROJECT := github.com/VodkaBears/yaspell
+VERSION := $(shell git describe --tags --abbrev=0)
+VERSION_FLAG := $(PROJECT)/config.version=$(VERSION)
+DIST_FOLDER := dist
+
 .PHONY: githooks
 githooks:
 	cp -f githooks/* .git/hooks/
@@ -18,7 +23,7 @@ lint:
 
 .PHONY: test
 test:
-	go test -cover ./...
+	go test -ldflags "-X ${VERSION_FLAG}" -cover ./...
 
 .PHONY: cover
 cover:
@@ -26,18 +31,17 @@ cover:
 
 .PHONY: clean
 clean:
-	rm -rf build
+	rm -rf ${DIST_FOLDER}
 
 .PHONY: build
 build: clean
-	mkdir build
-	gox -os="linux darwin windows" -arch="386 amd64" -output="build/{{.Dir}}_{{.OS}}_{{.Arch}}" ./...
+	gox -ldflags "-X ${VERSION_FLAG}" -os="linux darwin windows" -arch="386 amd64" -output="${DIST_FOLDER}/{{.Dir}}_{{.OS}}_{{.Arch}}" ./...
 
 .PHONY: run
 run:
-	go run *.go ${ARGS}
+	go run -ldflags "-X ${VERSION_FLAG}" *.go ${ARGS}
 
 .PHONY: coveralls
 coveralls:
-	overalls -project=github.com/VodkaBears/yaspell -covermode=count
+	overalls -project=$(PROJECT) -covermode=count
 	goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken 2zEPspDOcwDzRYBKbDmjk846HOf4ugxlO
