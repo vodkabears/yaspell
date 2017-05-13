@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/VodkaBears/yaspell/config"
+	"github.com/vodkabears/yaspell/config"
 )
 
 func TestVersionString(t *testing.T) {

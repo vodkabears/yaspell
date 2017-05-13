@@ -1,4 +1,4 @@
-PROJECT := github.com/VodkaBears/yaspell
+PROJECT := github.com/vodkabears/yaspell
 VERSION := $(shell git describe --tags --abbrev=0)
 VERSION_FLAG := $(PROJECT)/config.version=$(VERSION)
 DIST_FOLDER := dist

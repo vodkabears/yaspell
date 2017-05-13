@@ -4,9 +4,9 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/VodkaBears/yaspell/checker"
-	"github.com/VodkaBears/yaspell/config"
-	"github.com/VodkaBears/yaspell/reader"
+	"github.com/vodkabears/yaspell/checker"
+	"github.com/vodkabears/yaspell/config"
+	"github.com/vodkabears/yaspell/reader"
 )
 
 func TestChecherCheck(t *testing.T) {
