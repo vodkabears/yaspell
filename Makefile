@@ -37,7 +37,7 @@ clean:
 
 .PHONY: build
 build: clean
-	gox -ldflags "-X ${VERSION_FLAG}" -os="linux darwin windows" -arch="386 amd64" -output="${DIST_FOLDER}/{{.Dir}}_{{.OS}}_{{.Arch}}" ./...
+	gox -ldflags "-X ${VERSION_FLAG}" -os="linux darwin windows" -arch="386 amd64" -output="${DIST_FOLDER}/{{.Dir}}_{{.OS}}_{{if eq .Arch \"386\"}}i386{{else}}{{.Arch}}{{end}}" ./...
 
 .PHONY: run
 run:
