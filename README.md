@@ -82,8 +82,15 @@ Example: `-format=html`
 
 Prints current version.
 
-## To-do
+### Problems
 
-- Improve terminal interface.
-- GUI.
-- More text formats with built-in dictionaries.
+```
+2017/06/17 22:44:44 open ./i18n/en.js: too many open files
+```
+
+Solution:
+```
+ulimit -n 10000
+```
+
+
