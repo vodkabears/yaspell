@@ -7,6 +7,8 @@ import (
 	"github.com/vodkabears/yaspell/config"
 )
 
+const totalBitmaskSum = 3007
+
 func TestBitmaskSet(t *testing.T) {
 	var b config.Bitmask
 
@@ -17,6 +19,23 @@ func TestBitmaskSet(t *testing.T) {
 
 	if b != config.IgnoreUppercase|config.IgnoreDigits|config.IgnoreUrls {
 		t.Error("Expected to be equal to sum of bitmasks")
+	}
+}
+
+func TestBitmaskTotalSum(t *testing.T) {
+	b := config.Bitmask(config.IgnoreUppercase |
+		config.IgnoreDigits |
+		config.IgnoreUrls |
+		config.FindRepeatWords |
+		config.IgnoreLatin |
+		config.NoSuggest |
+		config.FlagLatin |
+		config.ByWords |
+		config.IgnoreCapitalization |
+		config.IgnoreRomanNumerals)
+
+	if b != totalBitmaskSum {
+		t.Errorf("Expected to be equal %d", totalBitmaskSum)
 	}
 }
 

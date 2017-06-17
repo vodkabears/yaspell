@@ -19,13 +19,13 @@ const (
 	// NoSuggest disables suggestions for incorrect words
 	NoSuggest = 2 << 4
 	// FlagLatin marks latin words as incorrect
-	FlagLatin = 2 << 5
+	FlagLatin = 2 << 6
 	// ByWords ignores dictionary context
-	ByWords = 2 << 6
+	ByWords = 2 << 7
 	// IgnoreCapitalization ignores the incorrect use of UPPERCASE/lowercase letters
-	IgnoreCapitalization = 2 << 7
+	IgnoreCapitalization = 2 << 8
 	// IgnoreRomanNumerals ignores roman numerals
-	IgnoreRomanNumerals = 2 << 8
+	IgnoreRomanNumerals = 2 << 10
 )
 
 var masks = map[string]Bitmask{
