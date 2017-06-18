@@ -10,6 +10,15 @@ import (
 )
 
 const maxBytes = 10000
+const batchSize = 256
+
+func min(a, b int) int {
+	if a <= b {
+		return a
+	}
+
+	return b
+}
 
 // Chunk is a chunk of text from file
 type Chunk struct {
@@ -42,8 +51,7 @@ func readFile(file string, ch chan Chunk, wg *sync.WaitGroup) {
 	wg.Done()
 }
 
-// Read reads a batch of files chunk by chunk and passes content to the channel
-func Read(ch chan Chunk, files []string) {
+func readBatch(ch chan Chunk, files []string) {
 	var wg sync.WaitGroup
 
 	wg.Add(len(files))
@@ -51,8 +59,14 @@ func Read(ch chan Chunk, files []string) {
 		go readFile(file, ch, &wg)
 	}
 
-	go func() {
-		wg.Wait()
-		close(ch)
-	}()
+	wg.Wait()
+}
+
+// Read reads a batch of files chunk by chunk and passes content to the channel
+func Read(ch chan Chunk, files []string) {
+	for i, l := 0, len(files); i < l; i += batchSize {
+		readBatch(ch, files[i:min(l, i+batchSize)])
+	}
+
+	close(ch)
 }
