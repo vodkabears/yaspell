@@ -9,7 +9,7 @@ import (
 	"sync"
 )
 
-const maxBytes = 10000
+const maxBytes = 40000
 const batchSize = 128
 
 func min(a, b int) int {
