@@ -38,8 +38,10 @@ func checkWordByDictionary(word string, dictWords []*regexp.Regexp) bool {
 
 // Check checks misspells in a chunk of text
 func Check(chunk *reader.Chunk, cfg *config.Config) error {
+	text := RemoveIgnoredLines(chunk.Text)
+
 	resp, err := http.PostForm(serviceURL, url.Values{
-		"text":    {chunk.Text},
+		"text":    {text},
 		"lang":    {cfg.Lang},
 		"format":  {cfg.Format},
 		"options": {strconv.Itoa(int(cfg.Options))},
